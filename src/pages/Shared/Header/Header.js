@@ -3,8 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Container, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../Hooks/useAuth';
 
 const Header = () => {
+
+    const { user, logout } = useAuth()
+
     const avatar = <FontAwesomeIcon icon={faUserCircle}></FontAwesomeIcon>
     return (
         <div>
@@ -15,9 +19,12 @@ const Header = () => {
                     <Navbar.Collapse className="justify-content-end">
                         <Link className='fs-5 fw-bold text-decoration-none' to='/home'><p className='mx-2'>Home </p></Link>
                         <Link className='fs-5 fw-bold text-decoration-none' to='/explore'><p className='mx-2'>Explore Bike </p></Link>
+                        <Link className='fs-5 fw-bold text-decoration-none' to='/dashboard'><p className='mx-2'>Dashboard </p></Link>
+                        {user.email ? <button onClick={logout} className='btn btn-danger px-4'>Log Out</button> : <Link className='fs-5 fw-bold text-decoration-none' to='/login'><p className='mx-2'>Login </p></Link>
+                        }
 
                         <Navbar.Text>
-                            <p><span className='fs-4 text-success'> {avatar}</span> <a href="#login">Mark Otto</a></p>
+                            <p><span className='fs-4 text-success'> {avatar}</span> {user?.displayName}</p>
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Container>

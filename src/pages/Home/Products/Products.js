@@ -1,45 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Product from '../Product/Product';
 
 const Products = () => {
-    const bikes = [
-        {
-            name: 'suzuku gsx r-150',
-            price: 'TK 350,000',
-            img: 'https://www.banglamotor.net/images/suzuki/suzuki-gsx-r150-img-a2.jpg',
-            description: 'Meet the revolutionary Suzuki GSX-R150 Dual ABS with the best power-to-weight ratio and acceleration in the 147.3 cm3 class, plus nimble handling'
-        },
-        {
-            name: 'suzuku gsx r-150',
-            price: 'TK 350,000',
-            img: 'https://www.banglamotor.net/images/suzuki/suzuki-gsx-r150-img-a2.jpg',
-            description: 'Meet the revolutionary Suzuki GSX-R150 Dual ABS with the best power-to-weight ratio and acceleration in the 147.3 cm3 class, plus nimble handling'
-        },
-        {
-            name: 'suzuku gsx r-150',
-            price: 'TK 350,000',
-            img: 'https://www.banglamotor.net/images/suzuki/suzuki-gsx-r150-img-a2.jpg',
-            description: 'Meet the revolutionary Suzuki GSX-R150 Dual ABS with the best power-to-weight ratio and acceleration in the 147.3 cm3 class, plus nimble handling'
-        },
-        {
-            name: 'suzuku gsx r-150',
-            price: 'TK 350,000',
-            img: 'https://www.banglamotor.net/images/suzuki/suzuki-gsx-r150-img-a2.jpg',
-            description: 'Meet the revolutionary Suzuki GSX-R150 Dual ABS with the best power-to-weight ratio and acceleration in the 147.3 cm3 class, plus nimble handling'
-        },
-        {
-            name: 'suzuku gsx r-150',
-            price: 'TK 350,000',
-            img: 'https://www.banglamotor.net/images/suzuki/suzuki-gsx-r150-img-a2.jpg',
-            description: 'Meet the revolutionary Suzuki GSX-R150 Dual ABS with the best power-to-weight ratio and acceleration in the 147.3 cm3 class, plus nimble handling'
-        },
-        {
-            name: 'suzuku gsx r-150',
-            price: 'TK 350,000',
-            img: 'https://www.banglamotor.net/images/suzuki/suzuki-gsx-r150-img-a2.jpg',
-            description: 'Meet the revolutionary Suzuki GSX-R150 Dual ABS with the best power-to-weight ratio and acceleration in the 147.3 cm3 class, plus nimble handling'
-        }
-    ]
+    const [bikes, setBikes] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:5000/bikes')
+            .then(res => res.json())
+            .then(data => setBikes(data))
+    }, []);
     return (
         <div>
             <div className="container">
@@ -48,7 +16,7 @@ const Products = () => {
                     <p>the most latgest bike store in the wold can serve you latest qulity of motorcycle also you can sell here your motorcycle</p>
                     {
                         bikes.slice(0, 6).map(bike => <Product
-                            key={bike.name}
+                            key={bike._id}
                             bike={bike}
                         ></Product>)
                     }
