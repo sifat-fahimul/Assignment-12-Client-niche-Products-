@@ -19,7 +19,7 @@ const Header = () => {
                     <Navbar.Collapse className="justify-content-end">
                         <Link className='fs-5 fw-bold text-decoration-none' to='/home'><p className='mx-2'>Home </p></Link>
                         <Link className='fs-5 fw-bold text-decoration-none' to='/explore'><p className='mx-2'>Explore Bike </p></Link>
-                        <Link className='fs-5 fw-bold text-decoration-none' to='/dashboard'><p className='mx-2'>Dashboard </p></Link>
+                        {user?.email && <Link className='fs-5 fw-bold text-decoration-none' to='/dashboard'><p className='mx-2'>Dashboard </p></Link>}
                         {user.email ? <button onClick={logout} className='btn btn-danger px-4'>Log Out</button> : <Link className='fs-5 fw-bold text-decoration-none' to='/login'><p className='mx-2'>Login </p></Link>
                         }
 

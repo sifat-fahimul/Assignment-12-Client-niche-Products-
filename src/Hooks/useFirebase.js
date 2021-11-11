@@ -3,12 +3,8 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
 import { useEffect, useState } from "react";
 import initializeFirebase from "../pages/Login/Firebase/firebase.init";
 
-
-
-
 //initialize firebase app
 initializeFirebase();
-
 
 const useFirebase = () => {
     const [user, setUser] = useState({});
@@ -99,7 +95,7 @@ const useFirebase = () => {
     }, [auth])
 
     useEffect(() => {
-        fetch(`https://immense-chamber-79953.herokuapp.com/users/${user.email}`)
+        fetch(`http://localhost:5000/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
     }, [user.email])
@@ -117,14 +113,14 @@ const useFirebase = () => {
 
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('https://immense-chamber-79953.herokuapp.com/users', {
+        fetch('http://localhost:5000/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(user)
         })
-            .then()
+            .then(res => { })
 
     }
 

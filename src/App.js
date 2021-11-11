@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route
-} from "react-router-dom";
+}
+  from "react-router-dom";
 import Home from './pages/Home/Home/Home';
 import Purchase from './pages/Home/Purchase/Purchase';
 import ExploreBike from './pages/ExploreBike/ExploreBike';
@@ -13,10 +14,7 @@ import Register from './pages/Login/Register/Register';
 import AuthProvider from './Context/AuthProvider/AuthProvider';
 import PrivetRoute from './pages/Login/PrivateRoute/PrivetRoute';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
-import Pay from './pages/Dashboard/Pay/Pay';
-import Review from './pages/Dashboard/Review/Review';
-import MyOrder from './pages/Dashboard/MyOrder/MyOrder';
-import AddProduct from './pages/Dashboard/AddProduct/AddProduct';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -36,19 +34,6 @@ function App() {
             <PrivetRoute path='/dashboard'>
               <Dashboard></Dashboard>
             </PrivetRoute>
-            <PrivetRoute path='/pay'>
-              <Pay></Pay>
-            </PrivetRoute>
-            <PrivetRoute path='/review'>
-              <Review></Review>
-            </PrivetRoute>
-            <PrivetRoute path='/myOrder'>
-              <MyOrder></MyOrder>
-            </PrivetRoute>
-            <PrivetRoute path='/addProduct'>
-              <AddProduct></AddProduct>
-            </PrivetRoute>
-
             <Route path='/explore'>
               <ExploreBike></ExploreBike>
             </Route>
@@ -57,6 +42,9 @@ function App() {
             </Route>
             <Route path='/register'>
               <Register></Register>
+            </Route>
+            <Route path='*'>
+              <NotFound></NotFound>
             </Route>
           </Switch>
         </Router>
