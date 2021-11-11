@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Spinner } from 'react-bootstrap';
+import useAuth from '../../../Hooks/useAuth';
 
 const ManageAllProducts = () => {
+    const { isLoading } = useAuth();
     const [products, setProducts] = useState([])
-    console.log(products);
     useEffect(() => {
-        fetch('http://localhost:5000/bikes')
+        fetch('http://whispering-tundra-91667.herokuapp.com/bikes')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, []);
@@ -13,7 +14,7 @@ const ManageAllProducts = () => {
     const handleDelete = id => {
         const proceed = window.confirm('are you sure to delete this item')
         if (proceed) {
-            const url = `http://localhost:5000/products/delete/${id}`;
+            const url = `http://whispering-tundra-91667.herokuapp.com/products/delete/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -38,7 +39,7 @@ const ManageAllProducts = () => {
                             products.map(product => <div key={product._id} >
                                 {product.title && product.img &&
                                     < div >
-                                        <Card style={{ width: '18rem' }}>
+                                        {!isLoading && <Card style={{ width: '18rem' }}>
                                             <Card.Img variant="top" src={product.img} />
                                             <Card.Body>
                                                 <Card.Title>{product.title}</Card.Title>
@@ -48,17 +49,21 @@ const ManageAllProducts = () => {
                                                 </Card.Text>
                                                 <button onClick={() => handleDelete(product._id)} className='btn btn-danger px-4 me-4'>Delete</button>
                                             </Card.Body>
-                                        </Card>
+                                        </Card>}
+                                        {isLoading && <Spinner animation="border" role="status">
+                                            <span className="visually-hidden">Loading...</span>
+                                        </Spinner>}
                                     </div>
                                 }
 
                             </div>)
                         }
                     </div>
+
                 </div>
 
             </div >
-        </div>
+        </div >
     )
 };
 

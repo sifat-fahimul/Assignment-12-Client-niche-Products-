@@ -14,7 +14,7 @@ const AddProduct = () => {
         setProduct(newProduct);
     }
     const handleAddProduct = e => {
-        fetch('http://localhost:5000/bikes', {
+        fetch('http://whispering-tundra-91667.herokuapp.com/bikes', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

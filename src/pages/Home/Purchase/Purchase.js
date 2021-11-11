@@ -11,13 +11,13 @@ const Purchase = () => {
     const { user } = useAuth();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     useEffect(() => {
-        fetch(`http://localhost:5000/bikes/${id}`)
+        fetch(`http://whispering-tundra-91667.herokuapp.com/bikes/${id}`)
             .then(res => res.json())
             .then(data => setOrder(data))
     }, [id])
 
     const onSubmit = data => {
-        fetch(`http://localhost:5000/orders`, {
+        fetch(`http://whispering-tundra-91667.herokuapp.com/orders`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

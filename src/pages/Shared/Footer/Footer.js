@@ -27,8 +27,8 @@ const Footer = () => {
                     <div className="col-lg-3 col-md-6 col-12">
                         <h2 className='mb-4'>QUICK LINK</h2>
                         <Link className='text-decoration-none text-secondary' to='/'><h5> <span className='text-success'>{handArrow} </span>  Home</h5></Link>
-                        <Link className='text-decoration-none text-secondary' to='/'><h5> <span className='text-success'>{handArrow} </span>  Home</h5></Link>
-                        <Link className='text-decoration-none text-secondary' to='/'><h5> <span className='text-success'>{handArrow} </span>  Home</h5></Link>
+                        <Link className='text-decoration-none text-secondary' to='/explore'><h5> <span className='text-success'>{handArrow} </span>  Explore Bike</h5></Link>
+                        <Link className='text-decoration-none text-secondary' to='/dashboard'><h5> <span className='text-success'>{handArrow} </span>  Dashboard</h5></Link>
                     </div>
                     <div className="col-lg-3 col-md-6 col-12">
                         <h2 className='mb-4'>LATEST TWEET</h2>

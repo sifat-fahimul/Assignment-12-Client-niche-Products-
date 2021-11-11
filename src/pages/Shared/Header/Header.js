@@ -24,7 +24,7 @@ const Header = () => {
                         }
 
                         <Navbar.Text>
-                            <p><span className='fs-4 text-success'> {avatar}</span> {user?.displayName}</p>
+                            <p><span className='fs-4 text-success ps-3'> {avatar}</span> {user?.displayName}</p>
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Container>

@@ -8,7 +8,7 @@ const MakeAdmin = () => {
     }
     const handleAdminSubmit = e => {
         const user = { email };
-        fetch('http://localhost:5000/users/admin', {
+        fetch('http://whispering-tundra-91667.herokuapp.com/users/admin', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -29,7 +29,7 @@ const MakeAdmin = () => {
     return (
         <div>
             <div className="container">
-                <div className="row w-100 text-start">
+                <div className="row my-5 py-5 w-100 text-start">
                     <div className="col-lg-3 col-md-2"></div>
                     <div className="col-lg-6 col-md-8 col-12">
                         <h2>Make an Admin</h2>

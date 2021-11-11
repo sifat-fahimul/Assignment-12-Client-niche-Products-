@@ -15,7 +15,7 @@ const Review = () => {
         setRating(newRating);
     }
     const handleRatingSubmit = e => {
-        fetch('http://localhost:5000/review', {
+        fetch('http://whispering-tundra-91667.herokuapp.com/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

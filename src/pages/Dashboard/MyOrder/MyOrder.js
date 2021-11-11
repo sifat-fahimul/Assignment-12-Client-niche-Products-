@@ -5,7 +5,7 @@ import './MyOrder.css'
 const MyOrder = () => {
     const [orders, setOrders] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/orders')
+        fetch('http://whispering-tundra-91667.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
@@ -13,7 +13,7 @@ const MyOrder = () => {
     const handleDelete = id => {
         const proceed = window.confirm('are you sure to delete this item')
         if (proceed) {
-            const url = `http://localhost:5000/delete/${id}`;
+            const url = `http://whispering-tundra-91667.herokuapp.com/delete/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

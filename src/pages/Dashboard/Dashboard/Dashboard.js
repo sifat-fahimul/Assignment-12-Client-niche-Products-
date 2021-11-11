@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
+import { Container, Nav, Navbar, Offcanvas, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import MyOrder from '../MyOrder/MyOrder';
@@ -16,9 +16,10 @@ import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import ManageOrder from '../ManageOrder/ManageOrder';
 import ManageAllProducts from '../ManageAllProducts/ManageAllProducts';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
+import Footer from '../../Shared/Footer/Footer';
 
 const Dashboard = () => {
-    const { admin } = useAuth();
+    const { admin, isLoading } = useAuth();
     let { path, url } = useRouteMatch();
     const { logout } = useAuth()
     return (
@@ -55,7 +56,7 @@ const Dashboard = () => {
                 </Container>
             </Navbar>
             <div className="container">
-                <div className="row">
+                {!isLoading && <div className="row">
                     <Switch>
                         <Route exact path={`${path}/`}>
                             <MyOrder></MyOrder>
@@ -81,12 +82,14 @@ const Dashboard = () => {
                         <AdminRoute path={`${path}/manageAllProducts`}>
                             <ManageAllProducts></ManageAllProducts>
                         </AdminRoute>
-
-
                     </Switch>
 
-                </div>
+                </div>}
+                {isLoading && <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>}
             </div>
+            <Footer></Footer>
         </div>
     );
 };
