@@ -6,7 +6,7 @@ import Header from '../Shared/Header/Header';
 const ExploreBike = () => {
     const [bikes, setBikes] = useState([])
     useEffect(() => {
-        fetch('http://whispering-tundra-91667.herokuapp.com/bikes')
+        fetch('https://whispering-tundra-91667.herokuapp.com/bikes')
             .then(res => res.json())
             .then(data => setBikes(data))
     }, []);

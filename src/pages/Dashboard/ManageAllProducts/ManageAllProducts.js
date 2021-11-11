@@ -6,7 +6,7 @@ const ManageAllProducts = () => {
     const { isLoading } = useAuth();
     const [products, setProducts] = useState([])
     useEffect(() => {
-        fetch('http://whispering-tundra-91667.herokuapp.com/bikes')
+        fetch('https://whispering-tundra-91667.herokuapp.com/bikes')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, []);
@@ -14,7 +14,7 @@ const ManageAllProducts = () => {
     const handleDelete = id => {
         const proceed = window.confirm('are you sure to delete this item')
         if (proceed) {
-            const url = `http://whispering-tundra-91667.herokuapp.com/products/delete/${id}`;
+            const url = `https://whispering-tundra-91667.herokuapp.com/products/delete/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

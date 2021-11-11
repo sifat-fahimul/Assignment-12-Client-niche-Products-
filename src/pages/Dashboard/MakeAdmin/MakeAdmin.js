@@ -8,7 +8,7 @@ const MakeAdmin = () => {
     }
     const handleAdminSubmit = e => {
         const user = { email };
-        fetch('http://whispering-tundra-91667.herokuapp.com/users/admin', {
+        fetch('https://whispering-tundra-91667.herokuapp.com/users/admin', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
