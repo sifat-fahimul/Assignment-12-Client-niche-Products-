@@ -29,7 +29,7 @@ const Purchase = () => {
                 if (result.insertedId) {
                     alert('Order place Successfully');
                     reset()
-                    history.push('/myOrder')
+                    history.push('/explore')
                 }
             })
     };
