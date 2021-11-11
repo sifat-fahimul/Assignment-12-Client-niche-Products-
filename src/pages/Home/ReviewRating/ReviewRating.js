@@ -14,13 +14,15 @@ const ReviewRating = () => {
             <div className="container">
                 <hr />
                 <div className="row">
-
-                    <h2>Total Rating : {ratings.length}</h2>
+                    <h2 className='my-5'>Total Rating : {ratings.length}</h2>
                     {
                         ratings.map(rating => <div className="col-lg-3 col-md-6 col-12" key={rating._id}>
                             <Card style={{ width: '18rem' }}>
                                 <Card.Body>
-                                    <Card.Title>{rating.name}</Card.Title>
+                                    <Card.Title> Name : {rating.name}</Card.Title>
+                                    <Card.Text>
+                                        {rating?.email && <span> Email : {rating?.email}</span>}
+                                    </Card.Text>
                                     <Rating className='text-warning'
                                         initialRating={rating.rating}
                                         emptySymbol='far fa-star'
@@ -32,10 +34,7 @@ const ReviewRating = () => {
                             </Card>
                         </div>)
                     }
-
                 </div>
-
-
             </div>
         </div>
     );

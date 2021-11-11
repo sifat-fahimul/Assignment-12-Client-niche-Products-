@@ -1,10 +1,12 @@
 import Button from '@restart/ui/esm/Button';
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
+import { useHistory, useLocation } from 'react-router';
 
 const Review = () => {
-    const [rating, setRating] = useState({})
-    console.log(rating);
+    const [rating, setRating] = useState({});
+    const history = useHistory();
+    const location = useLocation();
     const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -22,6 +24,8 @@ const Review = () => {
         }).then(res => res.json())
             .then(data => {
                 if (data?.acknowledged) {
+                    setRating({})
+                    history.push(location?.state?.from || '/')
                     alert('Your Rating place successfully !')
 
 
@@ -39,7 +43,11 @@ const Review = () => {
                         <Form onSubmit={handleRatingSubmit} className='text-start'>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                 <Form.Label>Your name</Form.Label>
-                                <Form.Control onBlur={handleOnBlur} name='name' placeholder="Your Name" />
+                                <Form.Control onBlur={handleOnBlur} name='name' required placeholder="Your Name" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <Form.Label>Your Email</Form.Label>
+                                <Form.Control onBlur={handleOnBlur} name='email' placeholder="Your Email" />
                             </Form.Group>
                             <Form.Label>Select Rating</Form.Label>
                             <Form.Select onBlur={handleOnBlur} name='rating' aria-label="Default select example">
@@ -60,9 +68,9 @@ const Review = () => {
                     </div>
                     <div className="col-lg-3 col-md-2"></div>
                 </div>
-            </div>
+            </div >
 
-        </div>
+        </div >
     );
 };
 
