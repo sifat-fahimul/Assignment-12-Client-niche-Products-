@@ -32,7 +32,7 @@ const ManageAllProducts = () => {
     return (
         <div>
             <div className='container py-5 my-5 text-center'>
-                <h1>Mange All Order</h1>
+                <h1>Mange All Products</h1>
                 <div className=" my-5">
                     <div className='row custom'>
                         {
