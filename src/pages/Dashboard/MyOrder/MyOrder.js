@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
+import useAuth from '../../../Hooks/useAuth';
 import './MyOrder.css'
 
 const MyOrder = () => {
+    const { user } = useAuth()
     const [orders, setOrders] = useState([]);
     useEffect(() => {
-        fetch('https://whispering-tundra-91667.herokuapp.com/orders')
+        fetch(`https://whispering-tundra-91667.herokuapp.com/orders/user?email=${user.email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [])
+    }, [user.email])
 
     const handleDelete = id => {
         const proceed = window.confirm('are you sure to delete this item')
@@ -42,8 +44,7 @@ const MyOrder = () => {
                                             <Card.Img variant="top" src={order.img} />
                                             <Card.Body>
                                                 <Card.Title>{order.title}</Card.Title>
-                                                <Card.Text>{order.description}
-                                                </Card.Text>
+                                                <Card.Text>{order.description}</Card.Text>
                                                 <button onClick={() => handleDelete(order._id)} className='btn btn-danger px-4 me-4'>Delete</button>
                                             </Card.Body>
                                         </Card>
